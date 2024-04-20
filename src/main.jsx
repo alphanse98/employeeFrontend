@@ -4,13 +4,13 @@ import ReactDOM from 'react-dom/client'
 import  "./Intex.css"
 // import Routing from './Routes/RoutIng.jsx'
 import AppRoute from './Routes/AppRoute'
+import Heter from './component/Heter'
 
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <Heter />
     <AppRoute />
-    {/* <Routing /> */}
-
   </React.StrictMode>,
 )

@@ -1,16 +1,15 @@
 import React from "react";
 
-const LoginPage = () => {
+const Register = () => {
   return (
     <div>
       <div class="flex h-screen w-screen items-center overflow-hidden px-2">
         <div class="relative flex w-96 flex-col space-y-5 rounded-lg border bg-white px-5 py-10 shadow-xl sm:mx-auto">
           <div class="mx-auto mb-2 space-y-3">
             <h1 class="text-center text-3xl font-bold text-gray-700">
-              Login 
+              Register
             </h1>
           </div>
-
           <div>
             <div class="relative mt-2 w-full">
               <input
@@ -49,7 +48,7 @@ const LoginPage = () => {
           </div>
           <div class="flex w-full items-center">
             <button class="shrink-0 inline-block w-36 rounded-lg bg-blue-600 py-3 font-bold text-white">
-              Login
+              Submit
             </button>
           </div>
         </div>
@@ -57,4 +56,5 @@ const LoginPage = () => {
     </div>
   );
 };
-export default LoginPage;
+
+export default Register;
