@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-
 import {register} from "../service/AuthService"
+import Heter from "../component/Heter";
 
 
 const Register = () => {
 
-  const [loginData, setLoginData] = useState({username:"",password:"",role:"doctor"});
+  const [loginData, setLoginData] = useState({username:"",password:""});
 
   const updateValue = (e) =>{
     let temCopy = {...loginData}
@@ -14,15 +14,21 @@ const Register = () => {
   }
 
   const Submit = async()=>{
+    if (loginData?.username != "" && loginData?.password != "") {
     try {
       const res =  await register(loginData);
     } catch (error) {
       console.log("log in error", error);
+      alert("Error check user name and password");
     }
-   
+  }else{
+    alert("Fill user name and password");
   }
+   
+  } 
   return (
     <div>
+      <Heter/>
       <div class="flex h-screen w-screen items-center overflow-hidden px-2">
         <div class="relative flex w-96 flex-col space-y-5 rounded-lg border bg-white px-5 py-10 shadow-xl sm:mx-auto">
           <div class="mx-auto mb-2 space-y-3">

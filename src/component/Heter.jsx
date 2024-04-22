@@ -9,7 +9,7 @@ const Heter = () => {
     <div className="w-full text-gray-700 bg-white p-5 flex justify-between">
       <p>Employee Management app</p>
       <div className="flex gap-8">
-        {logIn ? (
+        {!logIn ? (
           <>
             <a
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"

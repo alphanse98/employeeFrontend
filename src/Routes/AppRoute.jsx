@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route,Navigate } from "react-router-dom";
 import LoginPage from "../page/LoginPage";
 import Register from "../page/Register";
 import EmployeeListPage from "../page/EmployeeListPage";
+import AddEmployee from "../page/AddEmployee"
 
 const AppRoute = () => {
 
@@ -19,6 +20,7 @@ const AppRoute = () => {
         <Route path="*" element={<LoginPage />}></Route>
         <Route path="/Register" element={<Register />}></Route>
         <Route path="/EmployeeList" element={<AuthenticatedRoute><EmployeeListPage /></AuthenticatedRoute>}></Route>
+        <Route path="/AddEmployee" element={<AuthenticatedRoute><AddEmployee /></AuthenticatedRoute>}></Route>
       </Routes>
     </BrowserRouter>
   );

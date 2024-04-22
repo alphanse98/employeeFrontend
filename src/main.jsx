@@ -10,7 +10,7 @@ import Heter from './component/Heter'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Heter />
+    {/* <Heter /> */}
     <AppRoute />
   </React.StrictMode>,
 )
