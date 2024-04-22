@@ -1,6 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
+
+import {register} from "../service/AuthService"
+
 
 const Register = () => {
+
+  const [loginData, setLoginData] = useState({username:"",password:"",role:"doctor"});
+
+  const updateValue = (e) =>{
+    let temCopy = {...loginData}
+    temCopy[e.target.name] = e.target.value
+    setLoginData(temCopy)
+  }
+
+  const Submit = async()=>{
+    try {
+      const res =  await register(loginData);
+    } catch (error) {
+      console.log("log in error", error);
+    }
+   
+  }
   return (
     <div>
       <div class="flex h-screen w-screen items-center overflow-hidden px-2">
@@ -15,7 +35,9 @@ const Register = () => {
               <input
                 type="text"
                 id="email"
-                value=""
+                value={loginData?.username}
+                name="username"
+                onChange={(e)=> updateValue(e)}
                 class="border-1 peer block w-full appearance-none rounded-lg border border-gray-300 bg-transparent px-2.5 pt-4 pb-2.5 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0"
                 placeholder=" "
               />
@@ -32,10 +54,13 @@ const Register = () => {
           <div>
             <div class="relative mt-2 w-full">
               <input
-                type="text"
+                type="password"
                 id="password"
                 class="border-1 peer block w-full appearance-none rounded-lg border border-gray-300 bg-transparent px-2.5 pt-4 pb-2.5 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0"
                 placeholder=" "
+                value={loginData?.password}
+                name="password"
+                onChange={(e)=> updateValue(e)}
               />
               <label
                 for="password"
@@ -47,7 +72,7 @@ const Register = () => {
             </div>
           </div>
           <div class="flex w-full items-center">
-            <button class="shrink-0 inline-block w-36 rounded-lg bg-blue-600 py-3 font-bold text-white">
+            <button onClick={()=>Submit()} class="shrink-0 inline-block w-36 rounded-lg bg-blue-600 py-3 font-bold text-white">
               Submit
             </button>
           </div>
