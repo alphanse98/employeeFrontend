@@ -25,3 +25,7 @@ export  function deleteEmployee(employee) {
   return axios.post(baseUrl + "deleteEmployee",employee);
 }
 
+export  function updateEmployee(employee) {
+  return axios.put(baseUrl + "updateEmployee",employee);
+}
+

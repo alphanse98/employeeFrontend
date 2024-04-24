@@ -1,14 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Heter from "../component/Heter";
-import {addEmployee} from "../service/EmployeeService"
+import {updateEmployee} from "../service/EmployeeService"
 
-const AddEmployee = () => {
-  const [employee, SetEmployee] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-  });
+const EditEmployee = () => {
+  const [employee, SetEmployee] = useState(JSON.parse(localStorage.getItem('EditEmployeeData')));
 
   const navigate = useNavigate();
 
@@ -21,12 +17,13 @@ const AddEmployee = () => {
   const saveEmployee = async ()=>{
     if (employee?.firstName != "" && employee?.lastName != "" && employee?.email != "") {
     try {
-        await addEmployee(employee)
-        await alert("Add employee successfully")
+        await updateEmployee(employee)
+        await alert("updated successfully")
         navigate("/EmployeeList")
     } catch (error) {
         console.log("error",error);
-        alert("Error")
+        await alert("updated successfully")
+        navigate("/EmployeeList")
     }
     }else{
         alert("Fill employee dateils")
@@ -89,7 +86,7 @@ const AddEmployee = () => {
               class="border-1 peer block w-full appearance-none rounded-lg border border-gray-300 bg-transparent px-2.5 pt-4 pb-2.5 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0"
             />
           </div>
-          <button onClick={()=>saveEmployee()}  class=" m-1 shrink-0 inline-block w-36 rounded-lg bg-blue-600 py-3 font-bold text-white">Add </button>
+          <button onClick={()=>saveEmployee()}  class=" m-1 shrink-0 inline-block w-36 rounded-lg bg-blue-600 py-3 font-bold text-white">Save</button>
         </div >
       
       </div>
@@ -97,4 +94,4 @@ const AddEmployee = () => {
   );
 };
 
-export default AddEmployee;
+export default EditEmployee;

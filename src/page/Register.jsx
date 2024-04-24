@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import {register} from "../service/AuthService"
 import Heter from "../component/Heter";
+import { useNavigate } from "react-router-dom";
 
 
 const Register = () => {
 
   const [loginData, setLoginData] = useState({username:"",password:""});
+
+  const navigate = useNavigate();
 
   const updateValue = (e) =>{
     let temCopy = {...loginData}
@@ -17,6 +20,8 @@ const Register = () => {
     if (loginData?.username != "" && loginData?.password != "") {
     try {
       const res =  await register(loginData);
+      await alert("Seccessfully register");
+      navigate("*");
     } catch (error) {
       console.log("log in error", error);
       alert("Error check user name and password");
